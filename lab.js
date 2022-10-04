@@ -121,14 +121,8 @@ let {color, make, model, year} = carDetails
   The property names are firstName, lastName, and title.
 */
 
-//test object Below
-// let dude = {
-//   title: "Mister",
-//   firstName: "Bob",
-//   lastName: "McGruff"
-// }
 
-//TEST objeCT above
+
 function greeting( obj ) {
   //Code Here
   let {title, firstName, lastName} = obj
@@ -137,6 +131,13 @@ function greeting( obj ) {
   return 'Hello, ' + title + ' ' + firstName + ' ' + lastName + '!';
   // Do not edit the code above.
 }
+//test object Below
+// let dude = {
+//   title: "Mister",
+//   firstName: "Bob",
+//   lastName: "McGruff"
+// }
+//TEST objeCT above
 
 //console.log(greeting(dude))//tested with test object
 
@@ -387,12 +388,20 @@ const colors = {
   highlight: 'blue',
   text: 'yellow'
 }
+
 //do not edit this object
 
 //Code Here 
+//TEST OBJECT FOr COMBINING using spread operator / merging 2nd field overwrites first field in the  event of a conflict.  
+// const penTool = {
+//   circle: 'green',
+//   highlight: 'yellow',
+//   square: 'red',
+// }
 let colorsCopy = {...colors}
-//console.log(colorsCopy)//test code.  functioned as required
-
+console.log(colorsCopy)//test code.  functioned as required
+// let colors2Copy = {...colors,...penTool}
+// console.log(colors2Copy)  //testing, note 
 
 /*
  Now use the spread operator to combine the following 2 objects into one. 
