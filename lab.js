@@ -7,7 +7,7 @@
 //Code here
 
 let me = {
-  nanme: 'Jon',
+  name: 'Jon',
   age: 42,
 }
 
@@ -83,7 +83,7 @@ favoriteThings.show="Fringe"
 //Code here
 favoriteThings['food']="Chicken Nuggets"
 favoriteThings['book']="Harry Potter"
-console.log(favoriteThings)
+//console.log(favoriteThings)
 
 
 //////////////////////////// PROBLEM 6 ////////////////////////////
@@ -245,8 +245,17 @@ delete user.age
 */
 
 //Code here
+class Cat {
+  constructor (name, age, color){
+    this.name=name;
+    this.age=age;
+    this.color=color
+  }
+}
 
+let Tabby = new Cat ("Fluffy", 6, "orange")
 
+console.log(Tabby.name)
 
 //////////////////////////// PROBLEM 13 ////////////////////////////
 /*
@@ -257,6 +266,20 @@ delete user.age
 */
 
 //Code here
+class Wizard {
+  constructor (name, age, favoriteSpell){
+    this.name=name;
+    this.age=age;
+    this.favoriteSpell=favoriteSpell
+  }
+  castSpell () {
+    console.log(`${this.name} has cast ${this.favoriteSpell}.`)
+  }
+
+}
+
+let harryPotter= new Wizard("Harry", 17, "Expelliarmus")
+harryPotter.castSpell()
 
 //////////////////////////// PROBLEM 14 ////////////////////////////
 /*
@@ -282,6 +305,28 @@ delete user.age
 */
 
 //Code Here
+class Phone {
+  constructor (brand, model, storage, color, price){
+    this.brand=brand;
+    this.model=model;
+    this.storage=storage;
+    this.color=color;
+    this.price=price;
+    this.sold=false;
+  }
+  sell () {
+    this.sold=true;
+    console.log(`${this['brand']} ${this['model']} has been sold.`)
+  }
+  changePrice  (newPrice) {
+    this.price=newPrice;
+  }
+}
+
+//Test code
+// let motorolla = new Phone("Motorolla", "Galaxy", "10MB", "black",20)
+// motorolla.sell()
+// console.log(motorolla)
 
   
 /*
@@ -294,7 +339,13 @@ delete user.age
     - price: number
 */
 
+
 //Code Here
+
+let galaxy = new Phone ("Motorolla", "Galaxy", 1000 , "black",20)
+let pixel = new Phone ("Samsung", "Iphone 6", 2000, "Taupe",400)
+let android = new Phone("Apple", "Google Phone",  10000,"pink",700) 
+
 
 /* 
   Call the changePrice function on one of your phones, 
@@ -304,6 +355,10 @@ delete user.age
 */ 
 
 //Code Here 
+console.log(android)//price at 700
+android.changePrice(600)
+console.log(android)//price at 600
+
 
 
 /*
@@ -313,6 +368,9 @@ delete user.age
 */
 
 //Code Here 
+console.log(pixel.sold)//should be false;
+pixel.sell()
+console.log(pixel.sold)//true
 
 
 //////////////////////////// PROBLEM 15 ////////////////////////////
@@ -332,7 +390,8 @@ const colors = {
 //do not edit this object
 
 //Code Here 
-
+let colorsCopy = {...colors}
+//console.log(colorsCopy)//test code.  functioned as required
 
 
 /*
@@ -356,10 +415,13 @@ const shippingInfo = {
   city: 'Anytown',
   state: 'AZ',
   zipCode: 85004,
+  
 }
 //do not edit the objects above
 
 //Code Here
+const helensInfo = {...contactInfo, ... shippingInfo}//that is powerful
+console.log(helensInfo)
 
 
 //Print helensInfo to see what it looks like, there should be no repeating properties.
@@ -379,13 +441,30 @@ const shippingInfo = {
 
 //Code Here 
 
+class Vehicle {
+  constructor (capacity, color, mileage){
+    this.capacity=capacity;
+    this.color=color;
+    this.mileage=mileage;
+  }
+  move (miles){
+    this.mileage+=miles;
+    console.log(this.mileage)
+  }
+}
+
+//TEST CODE
+// let car= new Vehicle(4,"black",50000)
+// console.log(car.mileage)
+// car.move(500)
+
 
 /*
   Create a vehicle using your new class and save it to a variable called myFirstVehicle
 */
 
 //Code Here
-
+let myFirstVehicle= new Vehicle(4,"black",50000)
 
 /* 
   Now we'll create a class that's based off of the vehicle class. 
@@ -396,16 +475,27 @@ const shippingInfo = {
 */
 
 //Code Here
+class Motorcycle extends Vehicle {
+  constructor (capacity, color, mileage, make, isCool){
+    super(capacity, color, mileage)
+    this.make=make;
+    this.isCool=isCool;
+  }
+}
 
 /*
   Create a Motorcycle using your new class and save it to a variable called myFirstMotorcycle
 */
 
 //Code Here 
+let myFirstMotorcycle = new Motorcycle (1, "red", 5000, "Honda", true)
 
 /*
   Call the move function on myFirstMotorcycle (don't forget the parameter)
 */
+//TEST
+//console.log(myFirstMotorcycle.mileage)//5000
+myFirstMotorcycle.move(1000)//should read 6000 it did.  
 
 /*
   Let's make another class based off of Vehicle. 
@@ -424,6 +514,25 @@ const shippingInfo = {
 */
 
 //Code Here
+class Boat extends Vehicle {
+  constructor (capacity, color, mileage, name, type, isSeaworthy){
+    super(capacity, color, mileage)
+    this.name=name;
+    this.type=type;
+    this.isSeaworthy=isSeaworthy;
+  }
+  checkSeaworthiness(){
+    if (this.isSeaworthy){
+      console.log(`The ${this.color} ${this.type} ${this.name} is seaworthy`)
+    }
+    else {
+      console.log(`You need to get your ${this.type} in shape`)
+    }
+  }
+  performMaintenance(){
+    this.isSeaworthy=true;
+  }
+}
 
 
 /*
@@ -432,21 +541,25 @@ const shippingInfo = {
 */
 
 //Code Here
+let yachtaYachta = new Boat (4, "brown", 1000, "Yachta Yachta Yachta", 'Row boot',false)
 
 /*
   Call the checkSeaworthiness method on your new boat
 */
 
 //Code Here
+yachtaYachta.checkSeaworthiness()
 
 /*
   Now run the performMaintenance method on your boat
 */
 
-//Code Here 
+//Code Here
+yachtaYachta.performMaintenance()
 
 /*
   Check the seaworthiness once more (you should be ready for the water!)
 */
 
 //Code Here
+yachtaYachta.checkSeaworthiness()
